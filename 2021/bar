@@ -1,0 +1,63 @@
+ 0 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 1)  (ADD X 14)  (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 7)  (MUL Y X) (ADD Z Y))
+ 1 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 1)  (ADD X 12)  (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 4)  (MUL Y X) (ADD Z Y))
+ 2 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 1)  (ADD X 11)  (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 8)  (MUL Y X) (ADD Z Y))
+ 3 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 26) (ADD X -4)  (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 1)  (MUL Y X) (ADD Z Y))
+ 4 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 1)  (ADD X 10)  (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 5)  (MUL Y X) (ADD Z Y))
+ 5 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 1)  (ADD X 10)  (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 14) (MUL Y X) (ADD Z Y))
+ 6 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 1)  (ADD X 15)  (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 12) (MUL Y X) (ADD Z Y))
+ 7 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 26) (ADD X -9)  (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 10) (MUL Y X) (ADD Z Y))
+ 8 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 26) (ADD X -9)  (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 5)  (MUL Y X) (ADD Z Y))
+ 9 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 1)  (ADD X 12)  (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 7)  (MUL Y X) (ADD Z Y))
+10 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 26) (ADD X -15) (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 6)  (MUL Y X) (ADD Z Y))
+11 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 26) (ADD X -7)  (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 8)  (MUL Y X) (ADD Z Y))
+12 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 26) (ADD X -10) (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 4)  (MUL Y X) (ADD Z Y))
+13 ((MUL X 0) (ADD X Z) (MOD X 26) (DIV Z 26) (ADD X 0)   (EQL X W) (EQL X 0) (MUL Y 0) (ADD Y 25) (MUL Y X) (ADD Y 1) (MUL Z Y) (MUL Y 0) (ADD Y W) (ADD Y 6)  (MUL Y X) (ADD Z Y))
+                                       c0         c1                                                                                                    c2
+
+
+
+
+
+
+w = input
+x = z % 26 + c1 != w
+z = z floor c0
+z *= 25 * x + 1
+z += (w + c2) * x
+
+When c0 is 1, c1 >= 10
+Thus, x != w always, so x always becomes 1 on those lines
+c0 is 1, so z floor c0 is always z
+
+w = input
+x = 1
+z = 26z + w + c2
+
+
+
+
+
+on the c0 = 26 lines
+
+x = z_old % 26 + c1 != w
+
+z_old % 26 == w - c1
+
+(w_old + 8) % 26 == w_new + 4
+
+(w_old + 4) == w_new
+
+old + 12 == new + 9
+
+o + 7 = new + 15
+o - 8
+
+
+5 7
+-2
+
+4 10
+-6
+
+
+old + 12 == new
