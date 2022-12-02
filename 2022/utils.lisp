@@ -4,11 +4,13 @@
 
 (in-package :utils)
 
-(defmacro with-file-lines (varname filename &body body)
-  `(let ((,varname (uiop:read-file-lines ,filename)))
+(defmacro with-file-lines ((varname filename &optional line-processor)  &body body )
+  `(let ((,varname
+           ,(if (null line-processor)
+                `(uiop:read-file-lines ,filename)
+                `(mapcar ,line-processor (uiop:read-file-lines ,filename)))))
      ,@body))
 
 (defmacro with-file-string (varname filename &body body)
   `(let ((,varname (uiop:read-file-string ,filename)))
      ,@body))
-
