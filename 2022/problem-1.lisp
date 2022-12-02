@@ -1,7 +1,7 @@
-(defpackage :problems
-  (:use :cl :uiop :cl-ppcre))
+(defpackage :problem-1
+  (:use :cl :uiop :cl-ppcre :utils))
 
-(in-package :problems)
+(in-package :problem-1)
 
 (declaim (optimize (debug 0) (speed 3) (space 3)))
 
@@ -14,9 +14,12 @@
               (apply #'+ (mapcar #'parse-integer (cl-ppcre:split "\\n" calorie-list))))
             elves)))
     (let ((sorted-elves (sort elf-calories #'>)))
-      (format t "~&Part 1: ~A" (first sorted-elves))
-      (format t "~&Part 2: ~A" (apply #'+ (subseq sorted-elves 0 3))))))
+      (let ((part1 (first sorted-elves))
+            (part2 (apply #'+ (subseq sorted-elves 0 3))))
+
+        (format t "~&1-1: ~A~&1-2: ~A" part1 part2)))))
 
 
 (problem-1)
+
 
