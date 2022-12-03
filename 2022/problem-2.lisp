@@ -5,7 +5,7 @@
 
 
 (defun problem-2 () 
-  (with-file-lines l "./input/2.txt"
+  (with-file-lines (l "./input/2.txt")
     (let ((part1 (apply #'+ (mapcar (lambda (round)
                                       (cond
                                         ((equal round "A X") (+ 1 3))
