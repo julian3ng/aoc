@@ -6,7 +6,8 @@
    :dbind
    :sum
    :prod
-   :group-list))
+   :group-list
+   :print-parts))
 
 (in-package :utils)
 
@@ -40,3 +41,7 @@
           until (>= start len)
           collect
           (subseq l start (when (< end len) end)))))
+
+(defun print-parts (problem-number part1 part2)
+  (format t "~A-1: ~A~%~A-2: ~A~%" problem-number part1 problem-number part2))
+
