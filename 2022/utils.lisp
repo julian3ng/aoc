@@ -18,7 +18,7 @@
                 `(mapcar ,line-processor (uiop:read-file-lines ,filename)))))
      ,@body))
 
-(defmacro with-file-string (varname filename &body body)
+(defmacro with-file-string ((varname filename) &body body)
   `(let ((,varname (uiop:read-file-string ,filename)))
      ,@body))
 
