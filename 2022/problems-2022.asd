@@ -6,7 +6,8 @@
                (:file "problem-2" :depends-on ("utils"))
                (:file "problem-3" :depends-on ("utils"))
                (:file "problem-4" :depends-on ("utils"))
-               (:file "problem-5" :depends-on ("utils")))
+               (:file "problem-5" :depends-on ("utils"))
+               (:file "problem-6" :depends-on ("utils")))
   :depends-on ("cl-ppcre" "alexandria" "split-sequence"))
 
 
