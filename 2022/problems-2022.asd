@@ -8,8 +8,9 @@
                (:file "problem-4" :depends-on ("utils"))
                (:file "problem-5" :depends-on ("utils"))
                (:file "problem-6" :depends-on ("utils"))
-               (:file "problem-7" :depends-on ("utils")))
-  :depends-on ("cl-ppcre" "alexandria" "split-sequence"))
+               (:file "problem-7" :depends-on ("utils"))
+               (:file "problem-8" :depends-on ("utils")))
+  :depends-on ("cl-ppcre" "alexandria" "split-sequence" "lisp-stat"))
 
 
 ;; HOW TO USE THIS:
