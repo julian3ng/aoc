@@ -49,4 +49,4 @@
                            maximize
                            (loop for j from 0 below m
                                  maximize (scenic-score i j)))))
-          (list part1 part2))))))
+          (print-parts 8 part1 part2))))))
