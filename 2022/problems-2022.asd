@@ -11,7 +11,8 @@
                (:file "problem-7" :depends-on ("utils"))
                (:file "problem-8" :depends-on ("utils"))
                (:file "problem-9" :depends-on ("utils"))
-               (:file "problem-10" :depends-on ("utils")))
+               (:file "problem-10" :depends-on ("utils"))
+               (:file "problem-11" :depends-on ("utils")))
   :depends-on ("cl-ppcre" "alexandria" "split-sequence" "lisp-stat"))
 
 
