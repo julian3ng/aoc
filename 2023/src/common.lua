@@ -19,4 +19,20 @@ function string.gfind(str, pattern)
    end
 end
 
+function string.split(str, c)
+   local t = {}
+   for s in string.gmatch(str, "([^"..c.."]+)") do
+      table.insert(t, s)
+   end
+   return t
+end
+
+function table.map(t, f)
+   local tt = {}
+   for _,x in ipairs(t) do
+      table.insert(tt, f(x))
+   end
+   return tt
+end
+
 return common
