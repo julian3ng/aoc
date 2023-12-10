@@ -35,4 +35,26 @@ function table.map(t, f)
    return tt
 end
 
+
+function print_table_compact(t)
+   if t == nil then io.write('nil') return end
+   io.write('[')
+   for i,v in pairs(t) do
+      if type(v) == 'table' then
+         print_table_compact(v)
+      else
+         io.write(v)
+      end
+      if i ~= #t then
+         io.write(', ')
+      end
+   end
+   io.write(']')
+end
+
+function common.pprint(t)
+   print_table_compact(t)
+   io.write('\n')
+end
+
 return common
