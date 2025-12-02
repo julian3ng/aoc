@@ -23,6 +23,23 @@ def process_lines(lines)
   return [pw1, pw2]
 end
 
+def process_lines_golfed(lines)
+  lines.reduce([50, 0, 0]) do |acc, line|
+    dial = acc[0]
+    diff = line.tr('LR', '-+').to_i
+    div, rem = (diff.abs / 100), diff.remainder(100)
+    [
+      (dial + rem) % 100,
+      acc[1] + ((dial + rem) % 100 == 0 ? 1 : 0),
+      acc[2] + div + ((dial > 0 and (dial + rem <= 0 or dial + rem >= 100)) ? 1 : 0)
+    ]
+  end[1,2]
+end
+
 p process_lines(File.readlines("./sample.txt"))
 p process_lines(File.readlines("./mine.txt"))
 p process_lines(File.readlines("./input.txt"))
+
+p process_lines_golfed(File.readlines("./sample.txt"))
+p process_lines_golfed(File.readlines("./mine.txt"))
+p process_lines_golfed(File.readlines("./input.txt"))
