@@ -36,10 +36,10 @@ def process_lines_golfed(lines)
   end[1,2]
 end
 
-p process_lines(File.readlines("./sample.txt"))
-p process_lines(File.readlines("./mine.txt"))
-p process_lines(File.readlines("./input.txt"))
+p process_lines(File.readlines("../input/sample.txt"))
+p process_lines(File.readlines("../input/mine.txt"))
+p process_lines(File.readlines("../input/input.txt"))
 
-p process_lines_golfed(File.readlines("./sample.txt"))
-p process_lines_golfed(File.readlines("./mine.txt"))
-p process_lines_golfed(File.readlines("./input.txt"))
+p process_lines_golfed(File.readlines("../input/sample.txt"))
+p process_lines_golfed(File.readlines("../input/mine.txt"))
+p process_lines_golfed(File.readlines("../input/input.txt"))
