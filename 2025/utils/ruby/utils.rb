@@ -23,6 +23,6 @@ class AocSolution
     raise StandardError, "No input.txt in #{@input_dir}" if !sample && @input_filename.nil?
 
     method_name = "part_#{n}".to_sym
-    public_send(method_name, sample ? @sample_filename : @input_filename) if self.class.method_defined? method_name
+    public_send(method_name, sample ? @sample_filename : @input_filename, sample: sample) if self.class.method_defined? method_name
   end
 end
