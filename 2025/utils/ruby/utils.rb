@@ -18,11 +18,12 @@ class AocSolution
     self.class.method_defined? :part_2
   end
 
-  def run_part(n, sample: true)
+  def run_part(n, sample: true, override: nil)
     raise StandardError, "No sample.txt in #{@input_dir}" if sample && @sample_filename.nil?
     raise StandardError, "No input.txt in #{@input_dir}" if !sample && @input_filename.nil?
 
     method_name = "part_#{n}".to_sym
-    public_send(method_name, sample ? @sample_filename : @input_filename, sample: sample) if self.class.method_defined? method_name
+    filename = override ? Pathname(@input_dir) + override : (sample ? @sample_filename : @input_filename)
+    public_send(method_name, filename, sample: sample) if self.class.method_defined? method_name
   end
 end
