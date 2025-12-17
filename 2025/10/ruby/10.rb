@@ -1,3 +1,4 @@
+require 'z3'
 require_relative '../../utils/ruby/utils'
 
 def bfs(goal, buttons)
@@ -21,28 +22,10 @@ def bfs(goal, buttons)
   raise StandardError, "No path found for #{goal}"
 end
 
-def bfs2(goal1, goal2, buttons)
-  # strategy: bfs over goal2 first (joltage), and if we made it, check goal1?
-  # if we exceed any part of goal2, skip
-  visited = Set[[0]]
-  q = [[0]]
-
-  until q.empty?
-    cur = q.shift
-    state1 = cur.reduce(:^)
-    state2 = cur.reduce(Array.new(goal2.length, 0)) do |acc, button|
-      p [acc, button]
-      button.each { acc[it] += 1 }
-    end
-
-    return cur.length if state1 == goal1 && state2 == goal2
-
-    buttons.each do |button|
-      next_state = cur + [button]
-      visited.add(next_state)
-      q << next_state
-    end
-  end
+def one_hot(xs, n)
+  r = Array.new(n, 0)
+  xs.each { |x| r[x] = 1 }
+  r
 end
 
 class Day10 < AocSolution
@@ -61,18 +44,39 @@ class Day10 < AocSolution
 
   def part_2(filename, sample)
     specs = File.readlines(filename, chomp: true).map do
-      machine, *buttons, joltage = it.split(' ')
-      [machine.tr('.#[]', '01  ').reverse.to_i(2),
-       buttons.map { it.scan(/\d+/).map(&:to_i) },
-       joltage.scan(/\d+/).map(&:to_i)]
+      _, *buttons, joltage = it.split(' ')
+      joltage = joltage.scan(/\d+/).map(&:to_i)
+      buttons = buttons.map { one_hot(it.scan(/\d+/).map(&:to_i), joltage.length) }
+      [buttons, joltage]
     end
 
-    bfs2(specs[0][0], specs[0][2], specs[0][1])
+    specs.sum do |buttons, joltages|
+      vars = buttons.map.with_index { |_, i| Z3.Int(i.to_s) }
+      solver = Z3::Optimize.new
+      vars.each { solver.assert(it >= 0) }
+
+      buttons.transpose.zip(joltages).each do |row, j|
+        expr = row.zip(vars).inject(0) do |acc, (b, v)|
+          acc + v * b
+        end
+        solver.assert(j == expr)
+      end
+
+      solver.minimize(vars.inject(&:+))
+
+      if solver.unsatisfiable?
+        # p buttons, joltage
+        raise StandardError, 'Something is wrong!'
+      end
+
+      model = solver.model
+      model.to_h.values.map(&:to_i).sum
+    end
   end
 end
 
 sol = Day10.new('../input')
-p sol.run_part(1)
+# p sol.run_part(1)
 # p sol.run_part(1, sample: false)
 
-p sol.run_part(2)
+p sol.run_part(2, sample: false)
